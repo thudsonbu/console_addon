@@ -1,22 +1,29 @@
+// hello.cc
+#include <node.h>
 
-#include <iostream>
-#include <nan.h>
-using namespace v8;
-
-NAN_METHOD(hello)
+namespace demo
 {
-  int count = 0;
-  for (int i = 0; i < 1000000; i++)
+
+  using v8::FunctionCallbackInfo;
+  using v8::Isolate;
+  using v8::Local;
+  using v8::Object;
+  using v8::String;
+  using v8::Value;
+
+  void Method(const FunctionCallbackInfo<Value> &args)
   {
-    count = i;
+    Isolate *isolate = args.GetIsolate();
+    args.GetReturnValue().Set(String::NewFromUtf8(
+                                  isolate, "world")
+                                  .ToLocalChecked());
   }
 
-  std::cout << "hello\n";
-}
+  void Initialize(Local<Object> exports)
+  {
+    NODE_SET_METHOD(exports, "hello", Method);
+  }
 
-NAN_MODULE_INIT(init)
-{
-  Nan::SetMethod(target, "hello", hello);
-}
+  NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
-NODE_MODULE(hello, init);
+}

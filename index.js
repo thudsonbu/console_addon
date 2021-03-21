@@ -1,11 +1,13 @@
 require("nan");
-console.log('finished "nan"');
 const { hello } = require("./build/Release/hello.node");
+const { cSpeed } = require("./build/Release/cSpeed.node");
+
+hello();
 console.log('finished "hello"');
 
 const cPlusPlusHelloTime = "c++ hello";
 console.time(cPlusPlusHelloTime);
-hello();
+cSpeed();
 console.timeEnd(cPlusPlusHelloTime);
 
 const jsLoopTime = "js loop";

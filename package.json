@@ -1,0 +1,35 @@
+{
+  "name": "console_colors_addon",
+  "version": "0.0.0",
+  "description": "A c++ addon for colorful console logs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "rebuild": "node-gyp rebuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thudsonbu/console_colors_addon.git"
+  },
+  "keywords": [
+    "node.js",
+    "c++",
+    "addons",
+    "node",
+    "bindings"
+  ],
+  "engines": {
+    "node": "14.16.0"
+  },
+  "author": "Thomas Hudson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thudsonbu/console_colors_addon/issues"
+  },
+  "homepage": "https://github.com/thudsonbu/console_colors_addon#readme",
+  "gypfile": true,
+  "dependencies": {
+    "nan": "^2.14.2",
+    "node-gyp": "^7.1.2"
+  }
+}
